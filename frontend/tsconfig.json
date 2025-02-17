@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"] // 确保路径别名配置正确
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",      // 包含Vue文件
+    "src/**/**/*.ts",
+    "src/**/**/*.d.ts",
+    "src/**/**/*.tsx",
+    "src/views/auth/*.vue"
+  ]
+}
