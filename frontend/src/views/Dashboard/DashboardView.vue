@@ -34,21 +34,22 @@
           text-color="#fff"
           active-text-color="#1890ff"
         >
-          <el-menu-item index="/tasks/create">
-            <!-- <el-icon><DataAnalysis /></el-icon> -->
-            <span class="menu-text">自动巡检任务配置</span>
-          </el-menu-item>
-          
+                    
           <el-sub-menu index="/tasks">
             <template #title>
               <!-- <el-icon><Setting /></el-icon> -->
-              <span class="menu-text">巡检任务&报告</span>
+              <span class="menu-text">巡检任务管理</span>
             </template>
-            <el-menu-item index="/tasks/list">巡检任务</el-menu-item>
-            <el-menu-item index="/tasks/report">巡检报告</el-menu-item>
+            <el-menu-item index="/dashboard/tasks/list">任务列表</el-menu-item>
+            <el-menu-item index="/dashboard/tasks/create">新建任务</el-menu-item>
           </el-sub-menu>
 
-          <el-menu-item index="/opreter">
+          <el-menu-item class="menu-item" index="/dashboard/tasks/report">
+            <!-- <el-icon><DataAnalysis /></el-icon> -->
+            <span class="menu-text">巡检报告</span>
+          </el-menu-item>
+          
+          <el-menu-item class="menu-item" index="/dashboard/opreter">
             <!-- <el-icon><Bell /></el-icon> -->
             <span class="menu-text">操作中心</span>
           </el-menu-item>
@@ -142,7 +143,6 @@ const username = computed(() => user.value?.username || '管理员')
 .main-content {
   flex: 1;
   display: flex;
-  text-align: center; /* 文字居中 */
   overflow: hidden;
 }
 
@@ -163,12 +163,30 @@ const username = computed(() => user.value?.username || '管理员')
   .content-view {
     flex: 1;
     padding: 20px;
-    background: #f0f2f5;
+    background: #fff;
     overflow-y: auto;
   }
 
+  .menu-item {
+    height: 80px;
+  }
   .menu-text {
-    font-size: 16px; /* 设置字体大小 */
-    font-weight: bold; /* 设置字体粗细 */
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  .fade-transform-enter-active,
+  .fade-transform-leave-active {
+    transition: all 0.3s ease;
+  }
+
+  .fade-transform-enter-from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  .fade-transform-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
   }
 </style>

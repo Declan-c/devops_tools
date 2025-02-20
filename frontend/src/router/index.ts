@@ -20,17 +20,30 @@ const routes = [
   },
   {
     path: '/dashboard',
-    name: 'Dashboard',
     component: () => import('@/views/Dashboard/DashboardView.vue'),
-    meta: { requiresAuth: true }
-  },
-  {
-    path: '/tasks/list',
-    component: () => import('@/views/Task/TaskList.vue')
-  },
-  {
-    path: '/tasks/create',
-    component: () => import('@/views/Task/TaskCreate.vue')
+    meta: { requiresAuth: true },
+    children: [
+      {
+        path: '',
+        name: 'DashboardHome',
+        component: () => import('@/views/Dashboard/HomeView.vue')
+      },
+      {
+        path: 'tasks/list',
+        name: 'TaskList',
+        component: () => import('@/views/Task/TaskList.vue')
+      },
+      {
+        path: 'tasks/create',
+        name: 'TaskCreate',
+        component: () => import('@/views/Task/TaskCreate.vue')
+      },
+      {
+        path: 'opreter',
+        name: 'Opreter',
+        component: () => import('@/views/Dashboard/Opreter.vue')
+      }
+    ]
   },
 ]
 

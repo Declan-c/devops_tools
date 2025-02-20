@@ -1,6 +1,6 @@
 <template>
     <div class="task-container">
-      <el-button type="primary" @click="router.push('/tasks/create')">
+      <el-button type="primary" @click="router.push('/dashboard/tasks/create')">
         <el-icon><Plus /></el-icon>
         新建任务
       </el-button>
