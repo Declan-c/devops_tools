@@ -1,6 +1,29 @@
 version: '3.8'
 
 services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - inspection-net
+
+  backend:
+    build: ./backend
+    environment:
+      - DB_HOST=postgresql
+      - DB_NAME=sre_tools
+      - DB_USER=root
+      - DB_PASSWORD=7Y5QbBYFZp
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgresql
+    networks:
+      - inspection-net
+
   postgresql:
     image: bitnami/postgresql:14
     environment:
@@ -10,17 +33,12 @@ services:
     ports:
       - "5432:5432"  # 映射 PostgreSQL 端口到主机的 5432 端口
     volumes:
-      - postgres_data:/var/lib/postgresql/data  # 数据持久化，挂载到主机目录
-
-  redis:
-    image: redis:7
-    environment:
-      - REDIS_PASSWORD=YvHyP7YN88
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
+      - pgdata:/var/lib/postgresql/data  # 数据持久化，挂载到主机目录
+    networks:
+      - inspection-net
 
 volumes:
-  postgres_data:
-  redis_data:
+  pgdata:
+
+networks:
+  inspection-net:

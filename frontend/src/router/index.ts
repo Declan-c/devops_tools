@@ -39,9 +39,14 @@ const routes = [
         component: () => import('@/views/Task/TaskCreate.vue')
       },
       {
+        path: 'tasks/report',
+        name: 'TaskReport',
+        component: () => import('@/views/Dashboard/ReportView.vue')
+      },
+      {
         path: 'opreter',
         name: 'Opreter',
-        component: () => import('@/views/Dashboard/Opreter.vue')
+        component: () => import('@/views/Dashboard/OpreterView.vue')
       }
     ]
   },
